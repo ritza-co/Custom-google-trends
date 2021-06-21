@@ -88,7 +88,8 @@ ax.xaxis.set_ticks_position('none')
 - Use `set_xticklabels()` with list comprehension to get only the year from our dataframe(else it includes the month, day, and time which we don't need) as labels on the x-axis. Alternatively, you could just as well use `['2016','2017','2018','2019',..]`.
 - Finally, we set the title for our graph using `set_title` and use `ax.xaxis.set_ticks_position('none')` to remove the pesky xticks report we would otherwise get on the graph.
 
-Your graph should look something like ![this](http://full/path/to/img.jpg "Interest over Time - Bar Chart"), save your notebook file.
+Your graph should look something like _this_, save your notebook file.
+![](Screenshots/Interest_BarChart.svg)
 
 ### Github
 
@@ -144,6 +145,7 @@ You'll notice that we use very similar code as before to plot our pie chart, wit
   After flattening, we can then set the title(not possible without flattening) and remove the xaxis ticks report as before.
 
 You should have a graph similar to _this_, which provides an interesting take on the regional interest on a topic.
+![](Screenshots/RegionInterest_PieChart.svg)
 
 ### Github diffs
 
@@ -168,6 +170,7 @@ After authorizing the app and allowing it repository access to our current repo,
 you should be redirected to the app's [home page]('https://app.reviewnb.com/').
 From here, let's select our repo and then the latest commit underneath the `Commits` tab.
 Opening the notebook file, we should be greeted with something like _this_.
+![](Screenshots/Capture1.png)
 
 This is _not_ a headache. Now we can see exactly what we have changed on the notebook and comparing it to our JSON dragon from before,
 this is rather helpful.
@@ -211,7 +214,9 @@ This time we do not aggregate the data as we will need to use all the points on 
 - We will remove the x axis values by using `set_xticks([])` as the values end up being rather hard to work with(especially when trying to correlate them with the years) (_Maybe I don't fully understand density plots. Should I remove this?_)
 - Notice that we do not set the x and y labels within the `.plot()` method but rather `ax.set_xlabel()` and `ax.set_ylabel()`. This is to show you that you can use this alternative technique in case you run into issues where the x label does not show even though you have defined it inside `.plot()`.
 
-You can then run the code and you will get something similar to _this_. It is interesting to view the spike in JavaScript interest in this manner.
+You can then run the code and you will get something similar to _this_.
+![](/Screenshots/Interest_Density.svg)
+It is interesting to view the spike in JavaScript interest in this manner.
 
 ## Pull Requests
 
