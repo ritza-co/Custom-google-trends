@@ -1,12 +1,22 @@
 # Visualizing Custom Graphs with Google Trends and Pandas
 
+`The first sentence is very long and an example of a comma splice (https://en.wikipedia.org/wiki/Comma_splice) which is one of the most common grammatical errors. It also risks alienating readers who don't necessarily fit that narrow definition but might be interested in the article anyway. Try to keep it shorter and more focused on the specific results - e.g. instead of "walk away with knowledge of x", say "you will have built x".)
+
 Perhaps you're interested in utilizing Google trends but find the website rather limiting, with the help of this article you will walk away
-with some know-how on using [Pytrends]("https://pypi.org/project/pytrends/")(an unofficial Google trends API) - as well as the usual suspects in visualizations, [matplotlib]('https://matplotlib.org') and specifically [pandas]('https://pandas.pydata.org/docs/getting_started/index.html#getting-started') as they have integrated functionality for matplotlib - to create custom graphs from Google trends data.
+with some know-how on using 
+
+`None of your links render properly for me in the GitHub preview - I think you need to remove the quote marks`
+
+[Pytrends]("https://pypi.org/project/pytrends/")(an unofficial Google trends API) - as well as the usual suspects in visualizations, [matplotlib]('https://matplotlib.org') and specifically [pandas]('https://pandas.pydata.org/docs/getting_started/index.html#getting-started') as they have integrated functionality for matplotlib - to create custom graphs from Google trends data.
+
+`No need to say this explicitly - you've provided the links so people can choose to visit them if they feel it necessary - in general, you want to try keep the reader's attention on this article or they might forget to come back.`
 Go ahead and view those links if you need to brush up on them.
 
 This tutorial assumes you have _some_ prior usage of Jupyter notebooks, Github, and matplotlib/pandas.
 
 We will be doing this on [Jupyter Notebooks]('https://jupyter.org') with the help of ReviewNB('https://www.reviewnb.com/') as our source control solution.
+
+`Avoid "I" (readers are very self-absorbed and only care about themselves). Same as before - don't chase readers to other resources unless it's necessary.`
 
 I recommend taking a look at the Pytrends documentation to find out what else the api can do, as well as matplotlib's [gallery]('https://matplotlib.org/stable/gallery/index.html') for examples of the different kinds of plots you could create. Let's get started by creating a new notebook.
 
@@ -34,7 +44,12 @@ pytrends = TrendReq(hl='en-US', tz=360)
 
 This initializes our pytrends object with the `hl`(host language) being set to English and the `tz`(timezone offset) to 360.
 The value of `360` correlates to the minutes of US Central Standard Time (6 hours behind Coordinated Universal Time (CST/UTC−06:00). It is `-360`, however, you have to remove the negative else it won't work - google -> pytrends convention).
+
+`avoid 'fluff' terms like 'most certainly' or anything that you can remove without changing the meaning of the sentence. Rather - "to find your own timezone offset. I see the docs are pretty minimal, but I think this is where a tutorial should also do some additional investigation and answer questions the reader is likely to have - if you use 360 for UTC-6, dropping the negative, how would you do a positive offset e.g. UTC+2?`)
+
 You can most certainly use your own timezone, which you can find [here]('https://forbrains.co.uk/international_tools/earth_timezones').
+
+`I would rather mention this at the end under 'possible issues` or similar - the reader hasn't run anything yet so they won't care about this at this point.`
 
 Note: It is possible to be rate limited, but that is beyond the current scope of the article. Have a look at the `Connect to Google`
 section on the [pytrends api]('https://pypi.org/project/pytrends/') for a remedy.
@@ -56,7 +71,10 @@ You will notice that a lot of the other pytrends functions do not take any argum
 which is stored within the pytrends object. This payload contains information on the data you are requesting.
 
 - `geo` is the geographic location that we have set to global by using an empty string.
-  This is the default behaviour, and so essentially we don't have to specify this. There are other parameters, however, you could set to specify and narrow your payload should you need to. For instance, another parameter: `timeframe` is set to `'today 5-y'` by default, which means 5 years back -> today's date. This will be okay for our example.
+  This is the default behaviour, and so essentially we don't have to specify this. There are other parameters, however, you could set to specify and narrow your payload should you need to. For instance, another parameter: `timeframe` is set to `'today 5-y'` by default, which means 
+  
+  `rather use full sentences in text - e.g. "From five years back until today.`
+  5 years back -> today's date. This will be okay for our example.
 
 Let's retrieve the 'interest over time' data with:
 
@@ -88,6 +106,7 @@ ax.xaxis.set_ticks_position('none')
 - Use `set_xticklabels()` with list comprehension to get only the year from our dataframe(else it includes the month, day, and time which we don't need) as labels on the x-axis. Alternatively, you could just as well use `['2016','2017','2018','2019',..]`.
 - Finally, we set the title for our graph using `set_title` and use `ax.xaxis.set_ticks_position('none')` to remove the pesky xticks report we would otherwise get on the graph.
 
+`Another comma splice`
 Your graph should look something like _this_, save your notebook file.
 ![](Screenshots/Interest_BarChart.svg)
 
@@ -158,13 +177,20 @@ git push
 
 Let's quickly review the changes on Github's website.
 On your repo, open the latest change we've made on the notebook and click on 'load diff'.
+
+`I think another screenshot here would help make it clearer why the next option is better`
+
 _A lot_ of JSON pops up showing the almost minor changes we've added.
-This _is_ a headache. Fortunately, we have a mighty weapon on our side to fight this JSON dragon.
+This _is_ a headache. Fortunately, we have
+
+`Probably a bit too much of a jump in style - tone down`
+a mighty weapon on our side to fight this JSON dragon.
 
 ## ReviewNB
 
 [ReviewNB]('https://www.reviewnb.com/') is a Github app specifically dealing with visual diffs and comments on notebooks.
 Go ahead and create an account for free if you have not already.
+
 
 After authorizing the app and allowing it repository access to our current repo,
 you should be redirected to the app's [home page]('https://app.reviewnb.com/').
@@ -173,13 +199,17 @@ Opening the notebook file, we should be greeted with something like _this_.
 ![](Screenshots/Capture1.png)
 
 This is _not_ a headache. Now we can see exactly what we have changed on the notebook and comparing it to our JSON dragon from before,
+`Another comma splice - also avoid telling the reader that something is helpful - it should be obvious from the demonstration.`
 this is rather helpful.
 
 ## Interest over Time - KDE plot
 
+`"providing mental clarity" is marketing speak and doesn't really add much here`
 With JSON headaches gone, providing mental clarity,
 let's create one final custom Google trend graph. This one will be a Kernel Density Estimation plot derived from our first
 graph. Watch this [video]('https://www.youtube.com/watch?v=Txlm4ORI4Gs') to get an overview of density plots.
+
+`Avoid giving the reader alternatives - it gets confusing really quickly and often they don't have the knowledge yet to make an informed choice - I think creating the branch first makes a lot more sense so I would only take them down that flow`
 
 Note: Do not save this plot. We will push it onto a new git branch, alternatively, you could create the branch first using the next subheading then return here.
 
@@ -242,10 +272,16 @@ The next screen will allow you to write a comment and create a pull request.
 After doing so, The `Conversation` tab will be opened in which you can have a discussion as per usual about the pull request you just created.
 You will notice that `review-notebook-app`bot has commented with a link to view our pull request on ReviewNB, lest we want to revive JSON dragon let's click on that link.
 
-The link takes us to the `Changes` tab on ReviewNB which we can also get to via the normal app [route]('https://app.reviewnb.com/') -> `Pull requests`. From there we can see the changes we've added and even add a comment on certain lines if we need to get clarification or provide feedback. Let's post a comment on the new graph, I've posted "**Interesting!**".
+The link takes us to the `Changes` tab on ReviewNB which we can also get to via the normal app [route]('https://app.reviewnb.com/') -> `Pull requests`. From there we can see the changes we've added and even add a comment on certain lines if we need to get clarification or provide feedback. Let's post a comment on the new graph, I've posted 
+
+`Try to show a more realistic example here, as if you were actually a reviewer on the pull request - e.g. maybe ask to make the image quality better or the file size smaller`.
+
+"**Interesting!**".
 We can now see our comment on the `Discussion` tab, and if we head back to Github, we will see the same thing in Conversation.
 
 #
+
+`Try to finish off a bit more cleanly - summarize what the reader built and what they could do next if they wanted to explore the idea further`.
 
 Finally, let's resolve our one-sided conversation and merge our WIP branch to main.
 This concludes the tutorial, if you need to explore other options within the tools and resources we have used,
